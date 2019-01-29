@@ -14,21 +14,20 @@ namespace WebApplication1.Pages
 
         public string Message1 { get; set; }
         public string Message2 { get; set; }
-        public object Name { get; set; }
-        public int Number1 { get; set; }
-        public int Number2 { get; set; }
 
         public void OnGet()
         {
             
         }
-        public void OnPost()
+        public void OnPost(string name, int number1, int number2)
         {
             Message1 =
-                     String.Format("Hello  {0}", Name);
+                     String.Format("Hello  {0}", name);
+
+            int result = number1 + number2;
 
             Message2 =
-                String.Format("The Sum of {0} and {1} is {2}", Number1, Number2, (Number1 + Number2));
+                String.Format("The Sum of {0} and {1} is {2}", number1, number2, result);
         }
         
     }
