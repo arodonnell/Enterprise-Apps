@@ -7,18 +7,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebApplication1.Pages
 {
-    public class WS1Model : PageModel
+    public class ws1Model : PageModel
     {
         public string[] MyTestArray { get; set; }
         = { "Ireland", "Scotland", "Wales", "England" };
 
+        public string Message { get; set; }
+        public object Name { get; set; }
+        public int Number1 { get; set; }
+        public int Number2 { get; set; }
+
         public void OnGet()
         {
-
+            
         }
         public void OnPost()
         {
-            @Model.Message = "Hello {0}", name;
+            Message =
+                     String.Format("Hello  {0}", Name);
+
+            Message =
+                String.Format("The Sum of {0} and {1} is {2}", Number1, Number2, (Number1 + Number2));
         }
+        
     }
 }
