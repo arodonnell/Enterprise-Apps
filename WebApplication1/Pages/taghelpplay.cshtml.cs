@@ -39,12 +39,17 @@ namespace WebApplication1.Pages
             Message =
             $"{Number1} , {Number2} , {Number3} , {Number4} , {Number5} , " +
                 $"{Number8} , {Number6} , {Number7} , {Text1} , {Datetime} , {DateTime2}";
-
-            Message2 =
-                $"{Contact} = Yes, Contact is allowed";
-            Message3 =
-                $"{Contact} = No, Contact is not allowed";
-
+            switch (Contact)
+            {
+                case true:
+                    Message2 =
+                        $"{Contact} = Yes, Contact is allowed";
+                    break;
+                case false:
+                    Message2 =
+                        $"{Contact} = No, Contact is not allowed";
+                    break;
+            }
         }
     }
 }
