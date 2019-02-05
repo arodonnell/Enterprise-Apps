@@ -1,0 +1,58 @@
+﻿@page
+@model WebApplication1.Pages.timeModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>time</title>
+</head>
+<body>
+<h1>Month Selector</h1>
+<form method="post">
+    <fieldset>
+        <legend>Pick all the Months you like</legend>
+        @for (int i = 0; i < Model.Months.Length; i++)
+    {
+        <input asp-for=Months[i].IsChosen />
+        <label asp-for=Months[i].IsChosen>@Model.Months[i].MonthName </label>
+    }
+    </fieldset>
+    <ul>
+        @for (int i = 0; i < @Model.Months.Length; i++)
+        {
+            if (@Model.Months[i].IsChosen)
+            {
+                <li> @Model.Months[i].MonthName</li>
+            }
+        }
+    </ul>
+    <select asp-for=ChosenDays asp-items=@Model.Day>
+        <option value="">--Pick Days--</option>
+    </select>
+    <button type="submit">Press Me</button>
+</form>
+
+@if (Model.HttpContext.Request.Method == "POST")
+{
+    if (@Model.ChosenDays.Length == 0)
+    {
+        <h3>You picked no Days??</h3>
+    }
+    else
+    {
+        <ul>
+            @foreach (string Day in @Model.ChosenDays)
+            {
+                <li>@Day</li>
+            }
+        </ul>
+    }
+}
+</body>
+</html>
